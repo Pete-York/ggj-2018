@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - playerBoundary_Top
+  - playerBoundary_Bottom
+  - block
+  - player
+  - block2
   layers:
   - Default
   - TransparentFX
