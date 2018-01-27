@@ -44,6 +44,12 @@ public class SentenceSelector : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			SetString (GetRandomLineOfLength (7));
 		}
+		if (Input.GetKeyDown (KeyCode.Return)) {
+			SetString (GetRandomLine());
+		}
+		if (Input.GetKeyDown (KeyCode.M)) {
+			SetString (GetRandomWord ());
+		}
 	}
 
 	private String GetRandomLineOfLength(int wordCount) {
@@ -65,5 +71,13 @@ public class SentenceSelector : MonoBehaviour {
 	private String GetRandomLineFromList (List<String> lines) {
 		int index = GetRandomIndex (lines.Count);
 		return lines [index];
+	}
+
+	private string GetRandomWord () {
+		StreamReader allWordsCSV = new StreamReader ("D:\\Unity\\Projectz\\Chinese Dinosaur Whispers Comic\\Assets\\dinosaurText\\all-words.csv");
+		string allWords = allWordsCSV.ReadToEnd ();
+		string[] allWordsArray = allWords.Split (',');
+		int index = GetRandomIndex (allWordsArray.Length);
+		return allWordsArray [index];
 	}
 }
