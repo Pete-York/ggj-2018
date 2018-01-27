@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class SentenceSelector : MonoBehaviour {
 	private static String textDirectory = "D:\\Unity\\Projectz\\Chinese Dinosaur Whispers Comic\\Assets\\dinosaurText\\";
-	private static int maxWordCount = 100;
 	private XmlDocument dinosaurComicsXML;
 
 	void Start () {
@@ -43,7 +42,28 @@ public class SentenceSelector : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			SetString (GetRandomLine ());
+			SetString (GetRandomLineOfLength (10));
 		}
+	}
+
+	private String GetRandomLineOfLength(int wordCount) {
+		List<String> appropriateLines = GetLinesOfLength (wordCount);
+		return GetRandomLineFromList (appropriateLines);
+	}
+
+	private List<String> GetLinesOfLength(int wordCount) {
+		List<String> result = new List<String> ();
+		StreamReader linesOfLength = new StreamReader (textDirectory + wordCount + ".txt");
+		String line = linesOfLength.ReadLine ();
+		while (line != null) {
+			result.Add (line);
+			line = linesOfLength.ReadLine ();
+		}
+		return result;
+	}
+
+	private String GetRandomLineFromList (List<String> lines) {
+		int index = GetRandomIndex (lines.Count);
+		return lines [index];
 	}
 }
