@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System;
 using System.Xml;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SentenceSelector : MonoBehaviour {
-	XmlDocument dinosaurComicsXML;
+	private static String textDirectory = "D:\\Unity\\Projectz\\Chinese Dinosaur Whispers Comic\\Assets\\dinosaurText\\";
+	private XmlDocument dinosaurComicsXML;
 
 	void Start () {
 		dinosaurComicsXML = new XmlDocument ();
-		dinosaurComicsXML.Load ("D:\\Unity\\Projectz\\Chinese Dinosaur Whispers Comic\\Assets\\everywordindinosaurcomicsOHGOD.xml");
+		dinosaurComicsXML.Load (textDirectory + "everywordindinosaurcomicsOHGOD.xml");
 
 		String firstLine = GetRandomLine ();
 		SetString (firstLine);
@@ -40,7 +42,42 @@ public class SentenceSelector : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			SetString (GetRandomLine ());
+			SetString (GetRandomLineOfLength (7));
 		}
+		if (Input.GetKeyDown (KeyCode.Return)) {
+			SetString (GetRandomLine());
+		}
+		if (Input.GetKeyDown (KeyCode.M)) {
+			SetString (GetRandomWord ());
+		}
+	}
+
+	private String GetRandomLineOfLength(int wordCount) {
+		List<String> appropriateLines = GetLinesOfLength (wordCount);
+		return GetRandomLineFromList (appropriateLines);
+	}
+
+	private List<String> GetLinesOfLength(int wordCount) {
+		List<String> result = new List<String> ();
+		StreamReader linesOfLength = new StreamReader (textDirectory + wordCount + ".txt");
+		String line = linesOfLength.ReadLine ();
+		while (line != null) {
+			result.Add (line);
+			line = linesOfLength.ReadLine ();
+		}
+		return result;
+	}
+
+	private String GetRandomLineFromList (List<String> lines) {
+		int index = GetRandomIndex (lines.Count);
+		return lines [index];
+	}
+
+	private string GetRandomWord () {
+		StreamReader allWordsCSV = new StreamReader ("D:\\Unity\\Projectz\\Chinese Dinosaur Whispers Comic\\Assets\\dinosaurText\\all-words.csv");
+		string allWords = allWordsCSV.ReadToEnd ();
+		string[] allWordsArray = allWords.Split (',');
+		int index = GetRandomIndex (allWordsArray.Length);
+		return allWordsArray [index];
 	}
 }
