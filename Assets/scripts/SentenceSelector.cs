@@ -48,19 +48,4 @@ public class SentenceSelector : MonoBehaviour {
 			SetString (GetRandomLine ());
 		}
 	}
-
-
-
-	private void ParseAndCreateFiles() {
-		StreamWriter allWords = new StreamWriter (textDirectory + "all-words.csv");
-
-		XmlNodeList lines = dinosaurComicsXML.GetElementsByTagName ("line");
-		foreach (XmlNode line in lines) {
-			String lineText = line.InnerText;
-			String[] words = lineText.Split (' ');
-			foreach(String word in words){
-				allWords.Write (word + ',');
-			}
-		}	
-	}
 }
