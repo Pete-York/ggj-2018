@@ -42,7 +42,7 @@ public class SentenceSelector : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			SetString (GetRandomLineOfLength (10));
+			SetString (GetRandomLineOfLength (7));
 		}
 	}
 
