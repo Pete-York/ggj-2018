@@ -17,6 +17,7 @@ public class WordSelector : MonoBehaviour {
 	}
 
 	private string GetRandomWord() {
+		StreamReader allWordsCSV = new StreamReader (allWordsFile);
 		string allWords = allWordsCSV.ReadToEnd ();
 		string[] allWordsArray = allWords.Split (',');
 		int index = GetRandomIndex (allWordsArray.Length);

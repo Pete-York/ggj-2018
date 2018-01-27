@@ -9,6 +9,7 @@ TagManager:
   - block
   - player
   - block2
+  - FinalWordBasket
   layers:
   - Default
   - TransparentFX
