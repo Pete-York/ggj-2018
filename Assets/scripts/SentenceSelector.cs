@@ -52,26 +52,15 @@ public class SentenceSelector : MonoBehaviour {
 
 
 	private void ParseAndCreateFiles() {
-		List<StreamWriter> streamWriters = new List<StreamWriter> ();
-		for (int i = 0; i < maxWordCount; i++) {
-			streamWriters.Add(new StreamWriter(textDirectory + i + ".txt"));
-		}
+		StreamWriter allWords = new StreamWriter (textDirectory + "all-words.csv");
+
 		XmlNodeList lines = dinosaurComicsXML.GetElementsByTagName ("line");
 		foreach (XmlNode line in lines) {
 			String lineText = line.InnerText;
-			int wordCount = GetWordCount (lineText);
-			if (wordCount < maxWordCount) {
-				WriteLine (lineText, streamWriters[wordCount]);
+			String[] words = lineText.Split (' ');
+			foreach(String word in words){
+				allWords.Write (word + ',');
 			}
 		}	
-	}
-
-	private int GetWordCount (String text){
-		String[] words = text.Split (' ');
-		return words.Length;
-	}
-
-	private void WriteLine (String text, StreamWriter file) {
-		file.WriteLine (text);
 	}
 }
