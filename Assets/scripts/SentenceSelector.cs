@@ -17,8 +17,6 @@ public class SentenceSelector : MonoBehaviour {
 
 		String firstLine = GetRandomLine ();
 		SetString (firstLine);
-
-		ParseAndCreateFiles ();
 	}
 
 	private String GetFirstLine () {
