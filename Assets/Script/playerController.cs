@@ -8,12 +8,18 @@ public class playerController : MonoBehaviour {
 	public GameObject block2;
 
 	private float speed = 0.2f;
-	private Vector3 offset;
+	private Vector3 offsetFacingLeft;
+	private Vector3 offsetFacingRight;
 	private int basketFlag = 0;
+	private Vector3 faceLeft;
+	private Vector3 faceRight;
 
 	void Start ()
 	{
-		offset = basket.transform.position - transform.position;
+		offsetFacingLeft = basket.transform.position - transform.position;
+		offsetFacingRight = offsetFacingLeft + new Vector3 (0.3f, 0.0f, 0.0f);
+		faceLeft = new Vector3 (1.5f, 1.5f, 1.8f);
+		faceRight = new Vector3 (-1.5f, 1.5f, 1.8f);
 	}
 
 	void Update ()
@@ -21,7 +27,16 @@ public class playerController : MonoBehaviour {
 		float moveVertical = Input.GetAxis ("Vertical");
 		transform.Translate (Vector3.forward * moveVertical * speed);
 
-		basket.transform.position = transform.position + offset;
+		if (basketFlag == 0) 
+		{
+			basket.transform.position = transform.position + offsetFacingLeft;
+			basket.GetComponent<TextMesh> ().anchor = TextAnchor.MiddleRight;
+		} 
+		else 
+		{
+			basket.transform.position = transform.position + offsetFacingRight;
+			basket.GetComponent<TextMesh> ().anchor = TextAnchor.MiddleLeft;
+		}
 
 		if (Input.GetKey ("space") && basketFlag == 1) 
 		{
@@ -29,6 +44,7 @@ public class playerController : MonoBehaviour {
 			Quaternion spawnRotation = Quaternion.identity;
 			Instantiate (block2, spawnPosition, spawnRotation);
 			basketFlag = 0;
+			transform.localScale = faceLeft;
 		}
 
 	}
@@ -46,6 +62,7 @@ public class playerController : MonoBehaviour {
 			Destroy (other.gameObject);
 			basket.GetComponent<TextMesh> ().text = "Yo";
 			basketFlag = 1;
+			transform.localScale = faceRight;
 		}
 	}
 }
