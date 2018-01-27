@@ -5,6 +5,13 @@ using UnityEngine;
 public class blocksController : MonoBehaviour {
 
 	private float speed = 5.0f;
+	public string word;
+
+	public void SetWord(string word) {
+		this.word = word;
+		TextMesh textMesh = GetComponentInChildren<TextMesh> ();
+		textMesh.text = word;
+	}
 
 	void Update ()
 	{

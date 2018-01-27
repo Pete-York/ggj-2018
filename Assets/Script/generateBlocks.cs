@@ -29,10 +29,20 @@ public class generateBlocks : MonoBehaviour {
 			{
 				Vector3 spawnPosition = new Vector3 (blockPos_x, blockPos_y, Random.Range (-1.0f, 1.0f) * blockPos_z);
 				Quaternion spawnRotation = Quaternion.identity;
-				Instantiate (block, spawnPosition, spawnRotation);
+				blocksController blockController = Instantiate (block, spawnPosition, spawnRotation).GetComponent<blocksController> ();
+				InitialiseBlock (blockController);
 				yield return new WaitForSeconds (spawnWait);
 			}
 			yield return new WaitForSeconds (waveWait);
+		}
+	}
+
+
+	private void InitialiseBlock(blocksController blockController) {
+		if (Random.value > 0.5) {
+			blockController.SetWord ("Greater");
+		} else {
+			blockController.SetWord ("Less");
 		}
 	}
 }

@@ -9,6 +9,7 @@ public class playerController : MonoBehaviour {
 
 	private float speed = 0.2f;
 	private Vector3 offset;
+	private string word = "";
 	private int basketFlag = 0;
 
 	void Start ()
@@ -25,12 +26,17 @@ public class playerController : MonoBehaviour {
 
 		if (Input.GetKey ("space") && basketFlag == 1) 
 		{
-			Vector3 spawnPosition = transform.position;
-			Quaternion spawnRotation = Quaternion.identity;
-			Instantiate (block2, spawnPosition, spawnRotation);
-			basketFlag = 0;
+			ThrowWord ();
 		}
 
+	}
+
+	private void ThrowWord () {
+		Vector3 spawnPosition = transform.position;
+		Quaternion spawnRotation = Quaternion.identity;
+		Instantiate (block2, spawnPosition, spawnRotation);
+		basketFlag = 0;
+		SetWord ("");
 	}
 		
 	void OnTriggerStay (Collider other)
@@ -43,9 +49,18 @@ public class playerController : MonoBehaviour {
 
 		if (other.tag == ("block")) 
 		{
+			if (basketFlag != 1) {
+				string blockWord = other.GetComponent<blocksController> ().word;
+				SetWord (blockWord);
+				basketFlag = 1;
+			}
 			Destroy (other.gameObject);
-			basket.GetComponent<TextMesh> ().text = "Yo";
-			basketFlag = 1;
 		}
+	}
+
+	private void SetWord (string word)
+	{
+		this.word = word;
+		basket.GetComponent<TextMesh> ().text = word;
 	}
 }
