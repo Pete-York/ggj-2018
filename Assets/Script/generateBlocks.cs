@@ -39,10 +39,6 @@ public class generateBlocks : MonoBehaviour {
 
 
 	private void InitialiseBlock(blocksController blockController) {
-		if (Random.value > 0.5) {
-			blockController.SetWord ("Greater");
-		} else {
-			blockController.SetWord ("Less");
-		}
+		blockController.SetWord (TextUtils.GetRandomWord());
 	}
 }
