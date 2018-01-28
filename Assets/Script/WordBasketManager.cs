@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class WordBasketManager : MonoBehaviour {
 	private const string nextPlayerSceneName = "NextPlayer";
 	private const string FinalScoreSceneName = "FinalScoreScreen";
-	private const float minZ = -4.2f;
-	private const float maxZ = 4.2f;
+	private const float minZ = -3.8f;
+	private const float maxZ = 3.2f;
 	private const float basketX = 6;
 	private const float basketY = 0;
 
@@ -24,7 +24,7 @@ public class WordBasketManager : MonoBehaviour {
 	private void InitialiseBaskets () {
 		int count = targetSentence.Count;
 		float range = maxZ - minZ;
-		float interval = range / count;
+		float interval = range / Mathf.Max(count - 1, 1);
 		for (int i = 0; i < count; i++) {
 			float z = minZ + i * interval;
 			InitialiseBasket (z);

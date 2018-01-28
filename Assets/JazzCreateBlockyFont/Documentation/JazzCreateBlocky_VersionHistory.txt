@@ -1,0 +1,17 @@
+﻿                                     JazzCreate Blocky Font Version_History     Date Format(dd/mm/yyyy)
+
+
+Version 1.0 - First Release (10/02/2016)
+Version 1.1 - a) Added 3D world space Capital letters, smallcase letters, numbers, symbols.
+              b) Added this version history document. 
+              c) Added 3D characters to demo scene
+              d) Updated asset Store Icons
+              e) Updated asset Meta-data
+              f) Added more Asset store screenshots
+version 1.1 submitted (17/04/2016)
+version 1.2 - a) Added JazzCreateBlocky(Lite) .ttf to package
+              b) Added new .ttf to demo scene & script
+              c) Add new image to asset store screenshots
+              d) Update store front icons to include new .ttf 
+              e) Update asset meta-data 
+version 1.2 submitted (28/04/2016)
