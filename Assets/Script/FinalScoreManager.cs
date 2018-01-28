@@ -29,6 +29,10 @@ public class FinalScoreManager : MonoBehaviour {
 	}
 
 	private string GetSentenceString (List<string> sentence) {
-		
+		string result = "";
+		foreach (string word in sentence) {
+			result += " " + word;
+		}
+		return result;
 	}
 }

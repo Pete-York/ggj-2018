@@ -15,5 +15,8 @@ EditorBuildSettings:
     path: Assets/Scene/NextPlayer.unity
     guid: 656cd63f468e6e04a98d264cb3670d0e
   - enabled: 1
+    path: Assets/Scene/FinalScoreScreen.unity
+    guid: e82bdb9ccc20fd14eaeb30f80527c983
+  - enabled: 1
     path: Assets/scenes/main-scene.unity
     guid: 007fa185f19890f46b384ed40e9e7dd2

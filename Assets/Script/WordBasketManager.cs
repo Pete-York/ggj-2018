@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class WordBasketManager : MonoBehaviour {
 	private const string nextPlayerSceneName = "NextPlayer";
+	private const string FinalScoreSceneName = "FinalScoreScreen";
 	private const float minZ = -4.2f;
 	private const float maxZ = 4.2f;
 	private const float basketX = 6;
@@ -41,6 +42,8 @@ public class WordBasketManager : MonoBehaviour {
 		GlobalManager.currentTargetSentence = newTargetSentence;
 		if (GlobalManager.currentPlayer < GlobalManager.numberOfPlayers) {
 			SceneManager.LoadScene (nextPlayerSceneName);
+		} else {
+			SceneManager.LoadScene (FinalScoreSceneName);
 		}
 	}
 
