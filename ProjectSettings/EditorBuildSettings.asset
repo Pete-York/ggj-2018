@@ -18,5 +18,5 @@ EditorBuildSettings:
     path: Assets/Scene/FinalScoreScreen.unity
     guid: e82bdb9ccc20fd14eaeb30f80527c983
   - enabled: 1
-    path: Assets/scenes/main-scene.unity
-    guid: 007fa185f19890f46b384ed40e9e7dd2
+    path: Assets/Scene/Credit.unity
+    guid: cb37ccd63b55d41c288b6d91e691a61d

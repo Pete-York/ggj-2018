@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FinalScoreManager : MonoBehaviour {
-	private const string menuSceneName = "Menu";
+	private const string creditSceneName = "Credit";
 	private const string originalSentenceUIElement = "OriginalSentence";
 	private const string finalSentenceUIElement = "FinalSentence";
 
@@ -14,8 +14,8 @@ public class FinalScoreManager : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKey ("space")) {
-			SceneManager.LoadScene (menuSceneName);
+		if (Input.GetKey (KeyCode.Return)) {
+			SceneManager.LoadScene (creditSceneName);
 		}
 	}
 
