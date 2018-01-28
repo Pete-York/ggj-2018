@@ -7,7 +7,7 @@ public class NextPlayerController : MonoBehaviour {
 	private const string levelSceneName = "Demo";
 
 	void Update () {
-		if (Input.GetKey ("space")) {
+		if (Input.GetKey (KeyCode.Return)) {
 			SceneManager.LoadScene (levelSceneName);
 		}
 	}
