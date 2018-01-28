@@ -15,16 +15,21 @@ public class WordListGenerator {
 
 	private static List<string> GetRequiredWords () {
 		List<string> result = new List<string> ();
-		HashSet<string> requiredWords = new HashSet<string> ();
-		foreach (string word in GlobalManager.currentTargetSentence) {
-			requiredWords.Add (word);
-		}
-		foreach (string word in GlobalManager.originalTargetSentence) {
-			requiredWords.Add (word);
+		List<string> originalTargetSentence = GlobalManager.originalTargetSentence;
+		result.AddRange (originalTargetSentence);
+		result.AddRange (GlobalManager.currentTargetSentence);
+		foreach (string word in originalTargetSentence) {
+			int i = originalTargetSentence.Count;
+			while (i < result.Count) {
+				if (result [i] == word) {
+					result.RemoveAt (i);
+					i = result.Count;
+				} else {
+					i++;
+				}
+			}
 		}
 
-
-		result.AddRange (requiredWords);
 		return result;
 	}
 
