@@ -15,7 +15,7 @@ public class generateBlocks : MonoBehaviour {
 	private float spawnWait = 1.0f;
 	private float startWait = 0.5f;
 	private float waveWait = 2.0f;
-	private float endWait = 5.0f;
+	private float endWait = 3.0f;
 
 	void Start () {
 		List<string> wordList = WordListGenerator.GetWordList(wordListLength);
