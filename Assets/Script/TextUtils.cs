@@ -4,9 +4,8 @@ using UnityEngine;
 using System.IO;
 using System;
 
-public class TextUtils : MonoBehaviour {
+public class TextUtils {
 	private static string textDirectory = "D:\\Unity\\Projectz\\Chinese Dinosaur Whispers Comic\\Assets\\dinosaurText\\";
-	private static string dinoXml = "everywordindinosaurcomicsOHGOD.xml";
 	private static string allWordsCSV = "all-words.csv";
 
 	public static string GetRandomWord() {
@@ -21,6 +20,18 @@ public class TextUtils : MonoBehaviour {
 		System.Random random = new System.Random ();
 		double index = (random.NextDouble () * (double) max);
 		return (int) Math.Floor (index);
+	}
+
+	public static List<string> GetRandomWords(int count) {
+		List<string> result = new List<string> ();
+		StreamReader allWordsCSV = new StreamReader (TextUtils.textDirectory + TextUtils.allWordsCSV);
+		string allWords = allWordsCSV.ReadToEnd ();
+		string[] allWordsArray = allWords.Split (',');
+		for (int i = 0; i < count; i++) {
+			int index = GetRandomIndex (allWordsArray.Length);
+			result.Add (allWordsArray [index]);
+		}
+		return result;
 	}
 		
 	public static String GetRandomLineOfLength(int wordCount) {
