@@ -49,11 +49,13 @@ public class StartButton : MonoBehaviour {
 		InputField maxWordCountInputField = maxWordCountInput.GetComponent<InputField> ();
 		int minWordCount = GetIntFromInput (minWordCountInputField);
 		int maxWordCount = GetIntFromInput (maxWordCountInputField);
-		if (minWordCount <= maxWordCount) {
+		if (minWordCount < maxWordCount) {
 			int range = maxWordCount - minWordCount;
 			System.Random rng = new System.Random ();
 			int index = rng.Next (range - 1);
 			result = minWordCount + index;
+		} else if (minWordCount == maxWordCount) {
+			result = minWordCount;
 		}
 		return result;
 	}
