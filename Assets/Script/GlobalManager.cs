@@ -5,5 +5,7 @@ using UnityEngine;
 public class GlobalManager : MonoBehaviour {
 	public static List<string> originalTargetSentence = new List<string> ();
 	public static List<string> currentTargetSentence = new List<string> ();
+	public static int numberOfPlayers;
+	public static int currentPlayer;
 }
 
