@@ -19,9 +19,6 @@ public class generateBlocks : MonoBehaviour {
 
 	void Start () {
 		List<string> wordList = WordListGenerator.GetWordList(wordListLength);
-		PrintSentence (GlobalManager.currentTargetSentence);
-		PrintSentence (GlobalManager.originalTargetSentence);
-		PrintSentence (wordList);
 		StartCoroutine (SpawnWaves (wordList));
 		wordBasketManager = GetComponentInParent<WordBasketManager> ();
 	}
@@ -53,13 +50,5 @@ public class generateBlocks : MonoBehaviour {
 
 	private void MoveToNextPlayerScene () {
 		wordBasketManager.MoveToNextPlayerScene ();
-	}
-
-	private void PrintSentence (List<string> sentence) {
-		string sentenceString = "";
-		foreach (string word in sentence) {
-			sentenceString += " " + word;
-		}
-		print (sentenceString);
 	}
 }
