@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class playerController : MonoBehaviour {
-
+	public AudioClip catchWord;
+	public AudioClip throwWord;
 	public GameObject basket;
 	public GameObject block2;
 
+	private float vol = 0.6f;
 	private float speed = 0.2f;
 	private Vector3 offsetFacingLeft;
 	private Vector3 offsetFacingRight;
@@ -14,6 +16,7 @@ public class playerController : MonoBehaviour {
 	private int basketFlag = 0;
 	private Vector3 faceLeft;
 	private Vector3 faceRight;
+	private AudioSource source;
 
 	void Start ()
 	{
@@ -21,6 +24,7 @@ public class playerController : MonoBehaviour {
 		offsetFacingRight = offsetFacingLeft + new Vector3 (0.3f, 0.0f, 0.0f);
 		faceLeft = new Vector3 (1.5f, 1.5f, 1.8f);
 		faceRight = new Vector3 (-1.5f, 1.5f, 1.8f);
+		source = GetComponent<AudioSource> (); 
 	}
 
 	void Update ()
@@ -54,6 +58,7 @@ public class playerController : MonoBehaviour {
 		thrownBlock.GetComponent<blocks2Controller> ().SetWord (word);
 		basketFlag = 0;
 		SetWord ("");
+		source.PlayOneShot (throwWord, vol); 
 	}
 		
 	void OnTriggerStay (Collider other)
@@ -70,6 +75,7 @@ public class playerController : MonoBehaviour {
 				string blockWord = other.GetComponent<blocksController> ().word;
 				SetWord (blockWord);
 				basketFlag = 1;
+				source.PlayOneShot (catchWord, vol); 
 			}
 			Destroy (other.gameObject);
 			transform.localScale = faceRight;
