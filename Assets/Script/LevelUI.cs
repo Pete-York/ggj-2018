@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelUI : MonoBehaviour {
 
 	void Start () {
-		List<string> targetSentence = GlobalManager.targetSentence;
+		List<string> targetSentence = GlobalManager.currentTargetSentence;
 		SetSentence (targetSentence);
 	}
 
