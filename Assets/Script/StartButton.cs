@@ -45,8 +45,8 @@ public class StartButton : MonoBehaviour {
 
 	private int SelectSentenceLength () {
 		int result = 0;
-		InputField minWordCountInputField = minWordCountInput.GetComponentInChildren<InputField> ();
-		InputField maxWordCountInputField = maxWordCountInput.GetComponentInChildren<InputField> ();
+		InputField minWordCountInputField = minWordCountInput.GetComponent<InputField> ();
+		InputField maxWordCountInputField = maxWordCountInput.GetComponent<InputField> ();
 		int minWordCount = GetIntFromInput (minWordCountInputField);
 		int maxWordCount = GetIntFromInput (maxWordCountInputField);
 		if (minWordCount <= maxWordCount) {
@@ -59,7 +59,7 @@ public class StartButton : MonoBehaviour {
 	}
 
 	private void SetPlayerAndRound() {
-		InputField playerCountInputText = playerCountInput.GetComponentInChildren<InputField> ();
+		InputField playerCountInputText = playerCountInput.GetComponent<InputField> ();
 		int playerCount = GetIntFromInput (playerCountInputText);
 		GlobalManager.numberOfPlayers = playerCount;
 		GlobalManager.currentPlayer = 1;
