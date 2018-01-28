@@ -39,7 +39,9 @@ public class WordBasketManager : MonoBehaviour {
 	public void MoveToNextPlayerScene () {
 		List<string> newTargetSentence = GetNewTargetSentence ();
 		GlobalManager.currentTargetSentence = newTargetSentence;
-		SceneManager.LoadScene (nextPlayerSceneName);
+		if (GlobalManager.currentPlayer < GlobalManager.numberOfPlayers) {
+			SceneManager.LoadScene (nextPlayerSceneName);
+		}
 	}
 
 	private List<string> GetNewTargetSentence () {
