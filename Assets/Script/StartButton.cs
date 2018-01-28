@@ -23,6 +23,7 @@ public class StartButton : MonoBehaviour {
 		foreach (string word in wordArray) {
 			wordList.Add(word);
 		}
-		GlobalManager.targetSentence = wordList;
+		GlobalManager.originalTargetSentence = wordList;
+		GlobalManager.currentTargetSentence = wordList;
 	}
 }

@@ -4,12 +4,28 @@ using UnityEngine;
 using System;
 
 public class WordListGenerator {
-	public static List<string> GetWordList (List<string> targetSentence, int wordListLength) {
+	public static List<string> GetWordList (int wordListLength) {
 		List<string> wordList = new List<string> ();
-		wordList.AddRange (targetSentence);
+		List<string> requiredWords = GetRequiredWords ();
+		wordList.AddRange (requiredWords);
 		AddRandomWords (wordList, wordListLength);
 		ShuffleWords (wordList);
 		return wordList;
+	}
+
+	private static List<string> GetRequiredWords () {
+		List<string> result = new List<string> ();
+		HashSet<string> requiredWords = new HashSet<string> ();
+		foreach (string word in GlobalManager.currentTargetSentence) {
+			requiredWords.Add (word);
+		}
+		foreach (string word in GlobalManager.originalTargetSentence) {
+			requiredWords.Add (word);
+		}
+
+
+		result.AddRange (requiredWords);
+		return result;
 	}
 
 	private static void AddRandomWords (List<string> wordList, int desiredLength) {

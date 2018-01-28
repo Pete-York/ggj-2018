@@ -21,6 +21,10 @@ public class FinalWordBasket : MonoBehaviour {
 		}
 	}
 
+	public string getWord () {
+		return word;
+	}
+
 	private void SetWord(string word) {
 		this.word = word;
 		TextMesh textMesh = GetComponentInChildren<TextMesh> ();

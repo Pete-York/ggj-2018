@@ -5,8 +5,9 @@ using UnityEngine;
 public class generateBlocks : MonoBehaviour {
 
 	public GameObject block;
+	public WordBasketManager wordBasketManager;
 
-	private const int wordListLength = 25;
+	private const int wordListLength = 15;
 	private float blockPos_x = -6.0f;
 	private float blockPos_y = 0.0f;
 	private float blockPos_z = 4.2f;
@@ -14,10 +15,15 @@ public class generateBlocks : MonoBehaviour {
 	private float spawnWait = 1.0f;
 	private float startWait = 0.5f;
 	private float waveWait = 2.0f;
+	private float endWait = 5.0f;
 
 	void Start () {
-		List<string> wordList = WordListGenerator.GetWordList(GlobalManager.targetSentence, wordListLength);
+		List<string> wordList = WordListGenerator.GetWordList(wordListLength);
+		PrintSentence (GlobalManager.currentTargetSentence);
+		PrintSentence (GlobalManager.originalTargetSentence);
+		PrintSentence (wordList);
 		StartCoroutine (SpawnWaves (wordList));
+		wordBasketManager = GetComponentInParent<WordBasketManager> ();
 	}
 
 	IEnumerator SpawnWaves (List<string> wordList)
@@ -25,7 +31,7 @@ public class generateBlocks : MonoBehaviour {
 		yield return new WaitForSeconds (startWait);
 		while (wordList.Count > 0) 
 		{
-			for (int i = 0; i < blockCount; i++) 
+			for (int i = 0; i < Mathf.Min(wordList.Count, blockCount); i++) 
 			{
 				Vector3 spawnPosition = new Vector3 (blockPos_x, blockPos_y, Random.Range (-1.0f, 1.0f) * blockPos_z);
 				Quaternion spawnRotation = Quaternion.identity;
@@ -35,11 +41,25 @@ public class generateBlocks : MonoBehaviour {
 			}
 			yield return new WaitForSeconds (waveWait);
 		}
+		yield return new WaitForSeconds (endWait);
+		MoveToNextPlayerScene ();
 	}
 
 
 	private void InitialiseBlock(blocksController blockController, List<string> wordList) {
 		blockController.SetWord (wordList[0]);
 		wordList.RemoveAt(0);
+	}
+
+	private void MoveToNextPlayerScene () {
+		wordBasketManager.MoveToNextPlayerScene ();
+	}
+
+	private void PrintSentence (List<string> sentence) {
+		string sentenceString = "";
+		foreach (string word in sentence) {
+			sentenceString += " " + word;
+		}
+		print (sentenceString);
 	}
 }
