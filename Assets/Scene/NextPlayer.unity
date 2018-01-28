@@ -361,7 +361,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: please press 'SPACE' when ready!
+  m_Text: please press 'ENTER' when ready!
 --- !u!222 &459242037
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -561,7 +561,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Dear Next Player,
+  m_Text: Dear next player,
 --- !u!222 &1901891473
 CanvasRenderer:
   m_ObjectHideFlags: 0
