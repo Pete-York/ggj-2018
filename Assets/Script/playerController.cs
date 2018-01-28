@@ -50,7 +50,8 @@ public class playerController : MonoBehaviour {
 	private void ThrowWord () {
 		Vector3 spawnPosition = transform.position;
 		Quaternion spawnRotation = Quaternion.identity;
-		Instantiate (block2, spawnPosition, spawnRotation);
+		GameObject thrownBlock = Instantiate (block2, spawnPosition, spawnRotation);
+		thrownBlock.GetComponent<blocks2Controller> ().SetWord (word);
 		basketFlag = 0;
 		SetWord ("");
 	}

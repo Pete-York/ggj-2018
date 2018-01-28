@@ -6,6 +6,7 @@ public class generateBlocks : MonoBehaviour {
 
 	public GameObject block;
 
+	private const int wordListLength = 25;
 	private float blockPos_x = -6.0f;
 	private float blockPos_y = 0.0f;
 	private float blockPos_z = 4.2f;
@@ -15,22 +16,21 @@ public class generateBlocks : MonoBehaviour {
 	private float waveWait = 2.0f;
 
 	void Start () {
-
-		StartCoroutine (SpawnWaves ());
-		
+		List<string> wordList = WordListGenerator.GetWordList(GlobalManager.targetSentence, wordListLength);
+		StartCoroutine (SpawnWaves (wordList));
 	}
 
-	IEnumerator SpawnWaves ()
+	IEnumerator SpawnWaves (List<string> wordList)
 	{
 		yield return new WaitForSeconds (startWait);
-		while (true) 
+		while (wordList.Count > 0) 
 		{
 			for (int i = 0; i < blockCount; i++) 
 			{
 				Vector3 spawnPosition = new Vector3 (blockPos_x, blockPos_y, Random.Range (-1.0f, 1.0f) * blockPos_z);
 				Quaternion spawnRotation = Quaternion.identity;
 				blocksController blockController = Instantiate (block, spawnPosition, spawnRotation).GetComponent<blocksController> ();
-				InitialiseBlock (blockController);
+				InitialiseBlock (blockController, wordList);
 				yield return new WaitForSeconds (spawnWait);
 			}
 			yield return new WaitForSeconds (waveWait);
@@ -38,7 +38,8 @@ public class generateBlocks : MonoBehaviour {
 	}
 
 
-	private void InitialiseBlock(blocksController blockController) {
-		blockController.SetWord (TextUtils.GetRandomWord());
+	private void InitialiseBlock(blocksController blockController, List<string> wordList) {
+		blockController.SetWord (wordList[0]);
+		wordList.RemoveAt(0);
 	}
 }
