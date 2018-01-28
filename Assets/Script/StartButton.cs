@@ -12,6 +12,17 @@ public class StartButton : MonoBehaviour {
 	}
 
 	void StartGame() {
+		SelectTargetSentence ();
 		SceneManager.LoadScene ("Demo");
+	}
+
+	private void SelectTargetSentence() {
+		string targetSentence = TextUtils.GetRandomLineOfLength (6);
+		string[] wordArray = targetSentence.Split (' ');
+		List<string> wordList = new List<string> ();
+		foreach (string word in wordArray) {
+			wordList.Add(word);
+		}
+		GlobalManager.targetSentence = wordList;
 	}
 }

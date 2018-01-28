@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using UnityEngine;
 using System;
 
 public class TextUtils : MonoBehaviour {
@@ -23,4 +22,26 @@ public class TextUtils : MonoBehaviour {
 		double index = (random.NextDouble () * (double) max);
 		return (int) Math.Floor (index);
 	}
+		
+	public static String GetRandomLineOfLength(int wordCount) {
+		List<String> appropriateLines = GetLinesOfLength (wordCount);
+		return GetRandomLineFromList (appropriateLines);
+	}
+
+	private static List<String> GetLinesOfLength(int wordCount) {
+		List<String> result = new List<String> ();
+		StreamReader linesOfLength = new StreamReader (TextUtils.textDirectory + wordCount + ".txt");
+		String line = linesOfLength.ReadLine ();
+		while (line != null) {
+			result.Add (line);
+			line = linesOfLength.ReadLine ();
+		}
+		return result;
+	}
+
+	private static String GetRandomLineFromList (List<String> lines) {
+		int index = GetRandomIndex (lines.Count);
+		return lines [index];
+	}
+
 }
