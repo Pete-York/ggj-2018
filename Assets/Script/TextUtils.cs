@@ -6,7 +6,6 @@ using System;
 
 public class TextUtils {
 	private static string textDirectory = Application.dataPath + "\\dinosaurText\\";
-	//private static string textDirectory = "/Users/shali/Desktop/ggj-2018/Assets/dinosaurText/";
 	private static string allWordsCSV = "all-words.csv";
 	public static TextAsset allWords;
 	public static TextAsset oneLengthSentence;
