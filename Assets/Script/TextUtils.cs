@@ -5,14 +5,14 @@ using System.IO;
 using System;
 
 public class TextUtils {
-	private static string textDirectory = Application.dataPath + "\\dinosaurText\\";
-	private static string allWordsCSV = "all-words.csv";
+	private static string allWordsCSV = "all-words";
 	public static TextAsset allWords;
 	public static TextAsset oneLengthSentence;
 
 	public static string GetRandomWord() {
-		StreamReader allWordsCSV = new StreamReader (TextUtils.textDirectory + TextUtils.allWordsCSV);
-		string allWords = allWordsCSV.ReadToEnd ();
+		TextAsset allWordsCSV = Resources.Load(TextUtils.allWordsCSV, typeof(TextAsset)) as TextAsset;
+
+		string allWords = allWordsCSV.text;
 		string[] allWordsArray = allWords.Split (',');
 		int index = GetRandomIndex (allWordsArray.Length);
 		return allWordsArray [index];
@@ -26,8 +26,8 @@ public class TextUtils {
 
 	public static List<string> GetRandomWords(int count) {
 		List<string> result = new List<string> ();
-		StreamReader allWordsCSV = new StreamReader (TextUtils.textDirectory + TextUtils.allWordsCSV);
-		string allWords = allWordsCSV.ReadToEnd ();
+		TextAsset allWordsCSV = Resources.Load(TextUtils.allWordsCSV, typeof(TextAsset)) as TextAsset;
+		string allWords = allWordsCSV.text;
 		string[] allWordsArray = allWords.Split (',');
 		for (int i = 0; i < count; i++) {
 			int index = GetRandomIndex (allWordsArray.Length);
@@ -43,11 +43,11 @@ public class TextUtils {
 
 	private static List<String> GetLinesOfLength(int wordCount) {
 		List<String> result = new List<String> ();
-		StreamReader linesOfLength = new StreamReader (TextUtils.textDirectory + wordCount + ".txt");
-		String line = linesOfLength.ReadLine ();
-		while (line != null) {
+		TextAsset linesOfLengthFile = Resources.Load(wordCount.ToString(), typeof(TextAsset)) as TextAsset;
+		string linesOfLength = linesOfLengthFile.text;
+		string[] linesOfLengthStrings = linesOfLength.Split('\n');
+		foreach (string line in linesOfLengthStrings) {
 			result.Add (line);
-			line = linesOfLength.ReadLine ();
 		}
 		return result;
 	}

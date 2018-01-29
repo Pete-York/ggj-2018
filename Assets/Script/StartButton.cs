@@ -73,6 +73,7 @@ public class StartButton : MonoBehaviour {
 			result = int.Parse(inputField.text);
 		} 
 		catch (Exception e) {
+			print (e.ToString());
 			inputField.text = "this was not a number";
 		}
 		return result;

@@ -8,14 +8,6 @@ public class WordSelector : MonoBehaviour {
 	private static string allWordsFile = "D:\\Unity\\Projectz\\Chinese Dinosaur Whispers Comic\\Assets\\dinosaurText\\all-words.csv";
 	private StreamReader  allWordsCSV;
 
-	void Start () {
-		allWordsCSV = new StreamReader (allWordsFile);
-	}
-
-	void Update () {
-			
-	}
-
 	private string GetRandomWord() {
 		StreamReader allWordsCSV = new StreamReader (allWordsFile);
 		string allWords = allWordsCSV.ReadToEnd ();
