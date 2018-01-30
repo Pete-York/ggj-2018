@@ -21,6 +21,7 @@ public class GlobalManager : MonoBehaviour {
 
 	public static void setOriginalTargetSentence (List<string> sentence) {
 		originalTargetSentence = sentence;
+		allSentences.Clear ();
 	}
 
 	public static List<string> getCurrentTargetSentence () {
