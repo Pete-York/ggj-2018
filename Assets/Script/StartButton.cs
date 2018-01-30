@@ -39,8 +39,8 @@ public class StartButton : MonoBehaviour {
 		foreach (string word in wordArray) {
 			wordList.Add(word);
 		}
-		GlobalManager.originalTargetSentence = wordList;
-		GlobalManager.currentTargetSentence = wordList;
+		GlobalManager.setOriginalTargetSentence (wordList);
+		GlobalManager.setCurrentTargetSentence (wordList);
 	}
 
 	private int SelectSentenceLength () {
@@ -81,8 +81,8 @@ public class StartButton : MonoBehaviour {
 
 	private bool CheckInitialSettings () {
 		bool result = true;
-		result = result && GlobalManager.originalTargetSentence.Count > 0;
-		result = result && GlobalManager.currentTargetSentence.Count > 0;
+		result = result && GlobalManager.getOriginalTargetSentence().Count > 0;
+		result = result && GlobalManager.getCurrentTargetSentence().Count > 0;
 		result = result && GlobalManager.numberOfPlayers > 0;
 		result = result && GlobalManager.currentPlayer == 1;
 		return result;

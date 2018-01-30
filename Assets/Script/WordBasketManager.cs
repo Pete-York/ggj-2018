@@ -17,7 +17,7 @@ public class WordBasketManager : MonoBehaviour {
 	private List<GameObject> baskets = new List<GameObject> ();
 
 	void Start () {
-		this.targetSentence  = GlobalManager.originalTargetSentence;
+		this.targetSentence  = GlobalManager.getCurrentTargetSentence();
 		InitialiseBaskets ();
 	}
 
@@ -39,9 +39,10 @@ public class WordBasketManager : MonoBehaviour {
 
 	public void MoveToNextPlayerScene () {
 		List<string> newTargetSentence = GetNewTargetSentence ();
-		GlobalManager.currentTargetSentence = newTargetSentence;
+		GlobalManager.setCurrentTargetSentence(newTargetSentence);
 		if (GlobalManager.currentPlayer < GlobalManager.numberOfPlayers) {
 			GlobalManager.currentPlayer++;
+			GlobalManager.addIntermediateSentence (newTargetSentence);
 			SceneManager.LoadScene (nextPlayerSceneName);
 		} else {
 			SceneManager.LoadScene (FinalScoreSceneName);

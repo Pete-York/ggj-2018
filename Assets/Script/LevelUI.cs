@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelUI : MonoBehaviour {
 
 	void Start () {
-		List<string> targetSentence = GlobalManager.currentTargetSentence;
+		List<string> targetSentence = GlobalManager.getCurrentTargetSentence();
 		SetSentence (targetSentence);
 	}
 

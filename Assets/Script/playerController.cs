@@ -43,7 +43,7 @@ public class playerController : MonoBehaviour {
 			basket.GetComponent<TextMesh> ().anchor = TextAnchor.MiddleLeft;
 		}
 
-		if (Input.GetKey ("space") && basketFlag == 1) 
+		if (Input.GetKeyDown (KeyCode.Space) && basketFlag == 1) 
 		{
 			ThrowWord ();
 			transform.localScale = faceLeft;

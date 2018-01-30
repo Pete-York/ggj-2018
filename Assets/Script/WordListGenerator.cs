@@ -15,9 +15,9 @@ public class WordListGenerator {
 
 	private static List<string> GetRequiredWords () {
 		List<string> result = new List<string> ();
-		List<string> originalTargetSentence = GlobalManager.originalTargetSentence;
+		List<string> originalTargetSentence = GlobalManager.getOriginalTargetSentence ();
 		result.AddRange (originalTargetSentence);
-		result.AddRange (GlobalManager.currentTargetSentence);
+		result.AddRange (GlobalManager.getCurrentTargetSentence ());
 		foreach (string word in originalTargetSentence) {
 			int i = originalTargetSentence.Count;
 			while (i < result.Count) {
