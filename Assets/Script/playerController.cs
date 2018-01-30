@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerController : MonoBehaviour {
 	public AudioClip catchWord;
 	public AudioClip throwWord;
+	public AudioClip eatWord;
 	public GameObject basket;
 	public GameObject block2;
 
@@ -46,7 +47,11 @@ public class playerController : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Space) && basketFlag == 1) 
 		{
 			ThrowWord ();
-			transform.localScale = faceLeft;
+		}
+
+		if (Input.GetKeyDown (KeyCode.AltGr) && basketFlag == 1) 
+		{
+			EatWord ();
 		}
 
 	}
@@ -56,9 +61,19 @@ public class playerController : MonoBehaviour {
 		Quaternion spawnRotation = Quaternion.identity;
 		GameObject thrownBlock = Instantiate (block2, spawnPosition, spawnRotation);
 		thrownBlock.GetComponent<blocks2Controller> ().SetWord (word);
+		source.PlayOneShot (throwWord, vol);
+		EmptyBasket ();
+	}
+
+	private void EatWord () {
+		source.PlayOneShot (eatWord, vol);
+		EmptyBasket ();
+	}
+
+	private void EmptyBasket () {
 		basketFlag = 0;
 		SetWord ("");
-		source.PlayOneShot (throwWord, vol); 
+		transform.localScale = faceLeft;
 	}
 		
 	void OnTriggerStay (Collider other)
