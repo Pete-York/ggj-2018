@@ -30,16 +30,8 @@ public class FinalScoreManager : MonoBehaviour {
 		GameObject finalSentenceUI = GameObject.Find (finalSentenceUIElement);
 		Text originalSentenceUIText = originalSentenceUI.GetComponent<Text> ();
 		Text finalSentenceUIText = finalSentenceUI.GetComponent<Text> ();
-		originalSentenceUIText.text = "Original Sentence - " + GetSentenceString (GlobalManager.getOriginalTargetSentence());
-		finalSentenceUIText.text = "Final Sentence - " + GetSentenceString (GlobalManager.getCurrentTargetSentence());
-	}
-
-	private string GetSentenceString (List<string> sentence) {
-		string result = "";
-		foreach (string word in sentence) {
-			result += " " + word;
-		}
-		return result;
+		originalSentenceUIText.text = "Original Sentence - " + TextUtils.GetSentenceString (GlobalManager.getOriginalTargetSentence());
+		finalSentenceUIText.text = "Final Sentence - " + TextUtils.GetSentenceString (GlobalManager.getCurrentTargetSentence());
 	}
 
 	private void GetNextIntermediateSentence () {
@@ -53,7 +45,7 @@ public class FinalScoreManager : MonoBehaviour {
 			GameObject intermediateSentenceUI = GameObject.Find (intermediateSentenceUIElement);
 			Text intermediateSentenceUIText = intermediateSentenceUI.GetComponent<Text> ();
 
-			intermediateSentenceUIText.text = "Intermediate Sentence - " + GetSentenceString (intermediateSentence);
+			intermediateSentenceUIText.text = "Intermediate Sentence - " + TextUtils.GetSentenceString (intermediateSentence);
 			intermediateSentenceIndex++;
 		}
 	}

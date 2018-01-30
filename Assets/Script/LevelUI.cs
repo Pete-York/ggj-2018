@@ -18,10 +18,6 @@ public class LevelUI : MonoBehaviour {
 	}
 
 	private string CombineSentence (List<string> targetSentence) {
-		string result = "Target Sentence: ";
-		foreach (string word in targetSentence) {
-			result += " " + word;
-		}
-		return result;
+		return "Target Sentence: " + TextUtils.GetSentenceString (targetSentence);
 	}
 }
