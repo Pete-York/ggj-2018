@@ -91,10 +91,14 @@ public class playerController : MonoBehaviour {
                 string blockWord = other.GetComponent<blocksController> ().word;
 				SetWord (blockWord);
 				basketFlag = 1;
-				source.PlayOneShot (catchWord, vol); 
-			}
-			Destroy (other.gameObject);
-			transform.localScale = faceRight;
+				source.PlayOneShot (catchWord, vol);
+                Destroy(other.gameObject);
+                transform.localScale = faceRight;
+            }
+            else
+            {
+                other.GetComponent<blocksController>().Fall();
+            }
 		}
 	}
 
