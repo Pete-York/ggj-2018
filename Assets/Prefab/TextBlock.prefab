@@ -70,7 +70,7 @@ Transform:
   m_GameObject: {fileID: 1874583513866942}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4426325999929810}
   m_RootOrder: 0
@@ -190,7 +190,7 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 2
   m_TabSize: 4
-  m_FontSize: 12
+  m_FontSize: 60
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -208,4 +208,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a8974c7b12a4db4ac8e2a8fc39023b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFalling: 0
   word: 
