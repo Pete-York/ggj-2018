@@ -11,16 +11,14 @@ public class StartButton : MonoBehaviour {
 	private const string maxWordCountInputName = "SentenceLengthMax";
 
 	private GameObject playerCountInput;
-	private GameObject minWordCountInput;
-	private GameObject maxWordCountInput;
+	public Slider minWordCountInput;
+	public Slider maxWordCountInput;
 
 	
 	void Start () {
 		Button button = gameObject.GetComponent<Button>();
 		button.onClick.AddListener (StartGame);
 		playerCountInput = GameObject.Find (playerCountInputName);
-		minWordCountInput = GameObject.Find (minWordCountInputName);
-		maxWordCountInput = GameObject.Find (maxWordCountInputName);
 	}
 
 	void StartGame() {
@@ -45,10 +43,8 @@ public class StartButton : MonoBehaviour {
 
 	private int SelectSentenceLength () {
 		int result = 0;
-		InputField minWordCountInputField = minWordCountInput.GetComponent<InputField> ();
-		InputField maxWordCountInputField = maxWordCountInput.GetComponent<InputField> ();
-		int minWordCount = GetIntFromInput (minWordCountInputField);
-		int maxWordCount = GetIntFromInput (maxWordCountInputField);
+		int minWordCount = (int) minWordCountInput.value;
+		int maxWordCount = (int) maxWordCountInput.value;
 		if (minWordCount < maxWordCount) {
 			int range = maxWordCount - minWordCount;
 			System.Random rng = new System.Random ();
