@@ -73,7 +73,6 @@ public class playerController : MonoBehaviour {
 	private void EmptyBasket () {
 		basketFlag = 0;
 		SetWord ("");
-		HideThrowGuide ();
 		transform.localScale = faceLeft;
 	}
 		
@@ -87,10 +86,10 @@ public class playerController : MonoBehaviour {
 
 		if (other.tag == ("block")) 
 		{
-			if (basketFlag != 1) {
-				string blockWord = other.GetComponent<blocksController> ().word;
+			if (basketFlag != 1)
+            {
+                string blockWord = other.GetComponent<blocksController> ().word;
 				SetWord (blockWord);
-				DisplayThrowGuide ();
 				basketFlag = 1;
 				source.PlayOneShot (catchWord, vol); 
 			}
@@ -103,15 +102,5 @@ public class playerController : MonoBehaviour {
 	{
 		this.word = word;
 		basket.GetComponent<TextMesh> ().text = word;
-	}
-
-	private void DisplayThrowGuide () {
-		GameObject throwGuide = GameObject.Find ("ThrowGuide");
-		throwGuide.transform.localScale = new Vector3 (0.1f, 1.5f, 0.1f);
-	}
-
-	private void HideThrowGuide () {
-		GameObject throwGuide = GameObject.Find ("ThrowGuide");
-		throwGuide.transform.localScale = new Vector3 (0f, 1.5f, 0.1f);
 	}
 }
