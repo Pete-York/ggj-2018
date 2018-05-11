@@ -44,12 +44,12 @@ public class playerController : MonoBehaviour {
 			basket.GetComponent<TextMesh> ().anchor = TextAnchor.MiddleLeft;
 		}
 
-		if (Input.GetKeyDown (KeyCode.Space) && basketFlag == 1) 
+		if (Input.GetKeyDown (KeyCode.RightArrow) && basketFlag == 1) 
 		{
 			ThrowWord ();
 		}
 
-		if (Input.GetKeyDown (KeyCode.AltGr) && basketFlag == 1) 
+		if (Input.GetKeyDown (KeyCode.LeftArrow) && basketFlag == 1) 
 		{
 			EatWord ();
 		}
